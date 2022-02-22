@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="film_info_image_cover_layout_width">160dp</dimen>
+    <dimen name="film_info_image_cover_layout_height">160dp</dimen>
+    <dimen name="film_info_text_margin_start">40dp</dimen>
+    <dimen name="film_info_text_margin_top">20dp</dimen>
+    <dimen name="film_info_text_margin_end">30dp</dimen>
+</resources>
