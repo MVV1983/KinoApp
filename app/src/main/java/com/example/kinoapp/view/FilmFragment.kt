@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
 import com.example.kinoapp.App
 import com.example.kinoapp.R
 import com.example.kinoapp.adapters.ItemFilmAdapter
-
 import com.example.kinoapp.interfaces.Contract
 import com.example.kinoapp.model.datamodel.Film
 import com.example.kinoapp.model.datamodel.ListItem
@@ -118,10 +117,6 @@ class FilmFragment : Fragment(), ItemFilmAdapter.ItemClickInterface,
         adapter = context?.let { ItemFilmAdapter(it, this) }!!
         recycler_view.adapter = adapter
         recycler_view.setHasFixedSize(true)
-    }
-
-    override fun showData(film: List<Film>) {
-        listFilm = film
     }
 
     override fun showError(message: String) {
