@@ -72,7 +72,7 @@ class FilmPresenter() : Contract.Presenter {
         fView.updateAdapter(mergeringList)
     }
 
-    override fun sendSelected(genres: String) {
+    override fun sendSelected(genres: String,state: Boolean) {
        if (!state) {
             selectedFilm = allFilms.filter { it.genres.contains(genres) }
             for (g in allFilmGenres) {
