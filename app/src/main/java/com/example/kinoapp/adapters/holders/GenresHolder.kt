@@ -18,17 +18,17 @@ class GenresHolder(parent: ViewGroup, context: Context) : RecyclerView.ViewHolde
     fun bind(item: ListItem, clickListener: ItemFilmAdapter.ItemClickInterface) {
         val pos = item as ListItem.GenresModel
         name.text = pos.genres.name
-        val itemSelect = pos.genres.name
-
-
-        if (pos.genres.isSelected && itemSelect == item.genres.name) {
+      
+        if (pos.genres.isSelected) {
             name.setBackgroundResource(R.drawable.button_press)
+            pos.genres.isSelected = true
         } else {
             name.setBackgroundResource(R.drawable.button_not_pressed)
+            pos.genres.isSelected = false
         }
 
         itemView.name_genres_button.setOnClickListener {
-            clickListener.onClickGenres(pos.genres.name)
+            clickListener.onClickGenres(pos.genres.name,pos.genres.isSelected)
         }
     }
 }
