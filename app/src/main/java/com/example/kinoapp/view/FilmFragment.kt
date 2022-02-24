@@ -51,49 +51,7 @@ class FilmFragment : Fragment(), ItemFilmAdapter.ItemClickInterface,
         Log.d("dP", "onCreate dP$dPresenter")
         if (savedInstanceState != null) {
             listForSave = savedInstanceState.getSerializable(LIST_KEY) as List<ListItem>
-            Log.d("onCreate", "onCreate" + listOf(listForSave.size))
         }
-    }
-
-    override fun onAttach(activity: Activity) {
-        super.onAttach(activity)
-
-        Log.d("onAttach", "Аттачимся")
-    }
-
-    override fun onStart() {
-        super.onStart()
-        Log.d("onStart", "onStart")
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Log.d("onResume", "onResume" + listOf(listForSave.size))
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.d("onPause", "onPause" + listOf(listForSave.size))
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.d("onStop", "onStop")
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        Log.d("onDetach", "onDetach")
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        Log.d("onDestroyView", "onDestroyView" + listOf(listForSave.size))
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.d("onDestroy", "onDestroy" + listOf(listForSave.size))
     }
 
     override fun onCreateView(
@@ -111,7 +69,6 @@ class FilmFragment : Fragment(), ItemFilmAdapter.ItemClickInterface,
         prepareRecycler()
         if (savedInstanceState != null) {
             listForSave = savedInstanceState.getSerializable(LIST_KEY) as List<ListItem>
-            Log.d("onViewCreated", "onViewCreated" + listOf(listForSave.size))
             updateAdapter(listForSave)
         } else {
             dPresenter.callApi()
@@ -120,7 +77,6 @@ class FilmFragment : Fragment(), ItemFilmAdapter.ItemClickInterface,
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        Log.i("СОХРАНЯЕМ", "onSaveInstanceState" + listOf(listForSave.size))
         outState.putSerializable(LIST_KEY, ArrayList<ListItem>(listForSave))
     }
 
@@ -133,7 +89,6 @@ class FilmFragment : Fragment(), ItemFilmAdapter.ItemClickInterface,
     }
     override fun onClickGenres(genres: String,state: Boolean) {
         dPresenter.sendSelected(genres,state)
-        Log.d("CLICK GENRES", "CLICKED$genres")
     }
 
     override fun onClicked(film: Film) {
@@ -145,7 +100,6 @@ class FilmFragment : Fragment(), ItemFilmAdapter.ItemClickInterface,
         args.putString("film_description", film.description)
         args.putString("rating", film.rating.toString())
         args.putSerializable("film", film)
-        Log.d("ПРЫЖОК В ФИЛЬМ", "ЛИСТ В АДАПТЕРЕ" + listOf(listForSave.size))
         findNavController().navigate(R.id.action_mainFragment_to_filmInfoFragment, args)
     }
 
@@ -168,7 +122,6 @@ class FilmFragment : Fragment(), ItemFilmAdapter.ItemClickInterface,
 
     override fun showData(film: List<Film>) {
         listFilm = film
-        Toast.makeText(context, "выбрано"+film.size.toString(), Toast.LENGTH_LONG).show()
     }
 
     override fun showError(message: String) {
