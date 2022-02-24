@@ -23,7 +23,7 @@ interface Contract {
         fun catchError(message: String)
         fun decryptionCode(code: Int)
         fun getDataForAdapter()
-        fun sendSelected(genres: String)
+        fun sendSelected(genres: String,state: Boolean)
         fun setView(view: View)
     }
 }
