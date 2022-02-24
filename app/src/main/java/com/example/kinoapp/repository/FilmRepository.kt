@@ -21,7 +21,7 @@ class FilmRepository : Contract.Model {
 
     override fun requestApi(presenter: Contract.Presenter) {
         api= App.appComponent.getRetrofit()
-            val call = api.getFilms()//API.create().getFilms()
+            val call = api.getFilms()
 
             call.enqueue(object : Callback<Films> {
                 override fun onResponse(call: Call<Films>, response: Response<Films>) {
@@ -30,10 +30,7 @@ class FilmRepository : Contract.Model {
 
                     response.body()?.films?.let { presenter.getData(it) }
 
-                    //response.code()
                     presenter.decryptionCode(response.code())
-
-                    Log.d("API LIST", fullListFromApi.size.toString())
                 }
 
                 override fun onFailure(call: Call<Films>, t: Throwable) {
