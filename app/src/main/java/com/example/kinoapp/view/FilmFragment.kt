@@ -26,7 +26,7 @@ import javax.inject.Inject
 
 class FilmFragment : Fragment(), ItemFilmAdapter.ItemClickInterface,
     Contract.View {
-    // private  var presenter: Contract.Presenter = FilmPresenter()
+
     private lateinit var adapter: ItemFilmAdapter
     private var listForSave: List<ListItem> = ArrayList()
     private var listFilm: List<Film> = ArrayList()
@@ -74,7 +74,6 @@ class FilmFragment : Fragment(), ItemFilmAdapter.ItemClickInterface,
     override fun onPause() {
         super.onPause()
         Log.d("onPause", "onPause" + listOf(listForSave.size))
-       // arguments?.putSerializable(LIST_KEY, ArrayList<ListItem>(listForSave))
     }
 
     override fun onStop() {
@@ -89,14 +88,12 @@ class FilmFragment : Fragment(), ItemFilmAdapter.ItemClickInterface,
 
     override fun onDestroyView() {
         super.onDestroyView()
-        // arguments?.putSerializable(LIST_KEY, ArrayList<ListItem>(listForSave))
         Log.d("onDestroyView", "onDestroyView" + listOf(listForSave.size))
     }
 
     override fun onDestroy() {
         super.onDestroy()
         Log.d("onDestroy", "onDestroy" + listOf(listForSave.size))
-       // arguments?.putSerializable(LIST_KEY, ArrayList<ListItem>(listForSave))
     }
 
     override fun onCreateView(
@@ -132,11 +129,10 @@ class FilmFragment : Fragment(), ItemFilmAdapter.ItemClickInterface,
 
         if (savedInstanceState != null) {
             listForSave = savedInstanceState.getSerializable(LIST_KEY) as List<ListItem>
-            Log.i("ВОССТАНАВЛИВАЕМ", "ПОЛНЫЙ ЛИСТ В АДАПТЕР" + listOf(listForSave.size))
         }
     }
-    override fun onClickGenres(genres: String) {
-        dPresenter.sendSelected(genres)
+    override fun onClickGenres(genres: String,state: Boolean) {
+        dPresenter.sendSelected(genres,state)
         Log.d("CLICK GENRES", "CLICKED$genres")
     }
 
@@ -183,6 +179,5 @@ class FilmFragment : Fragment(), ItemFilmAdapter.ItemClickInterface,
         listForSave = list
         adapter.update(list)
         adapter.notifyDataSetChanged()
-        Toast.makeText(context, "Загружено в адаптер"+listForSave.size.toString(), Toast.LENGTH_LONG).show()
     }
 }
