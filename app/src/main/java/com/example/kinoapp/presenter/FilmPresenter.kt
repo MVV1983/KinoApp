@@ -73,10 +73,16 @@ class FilmPresenter() : Contract.Presenter {
     }
 
     override fun sendSelected(genres: String) {
-        selectedFilm = allFilms.filter { it.genres.contains(genres) }
-
-        for (g in allFilmGenres) {
-            g.isSelected = g.name == genres
+       if (!state) {
+            selectedFilm = allFilms.filter { it.genres.contains(genres) }
+            for (g in allFilmGenres) {
+                g.isSelected = g.name == genres
+            }
+        } else {
+            selectedFilm = allFilms
+            for (g in allFilmGenres) {
+                g.isSelected = false
+            }
         }
 
         fView.showData(selectedFilm)
