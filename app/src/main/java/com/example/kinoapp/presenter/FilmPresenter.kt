@@ -36,7 +36,6 @@ class FilmPresenter() : Contract.Presenter {
         }
 
         getDataForAdapter()
-        fView.showData(allFilms)
     }
 
     override fun catchError(message: String) {
@@ -83,7 +82,6 @@ class FilmPresenter() : Contract.Presenter {
             }
         }
 
-        fView.showData(selectedFilm)
         getDataForAdapter()
     }
 
