@@ -1,5 +1,6 @@
 # KinoApp
-
+Паттерн проектирования : MVP
+Стэк: Dagger2,Retrofit,Picasso
 Библиотеки: для сетевых запросов использована библиотека Retrofit.  
 Использовано DI Dagger2: Inject Presenter\Retrofit
 Обложки к фильмам загружаются с помощью библиотеки Picasso.  
