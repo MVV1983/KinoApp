@@ -23,9 +23,7 @@ class FilmPresenter() : Contract.Presenter {
     override fun callApi() {
         if (allFilms.isEmpty()) {
             model.requestApi(this)
-            Log.d("Вызов в API", allFilms.size.toString())
         } else {
-            Log.d("Лист заполнен", allFilms.size.toString() + allFilmGenres.size.toString())
             getData(allFilms)
         }
     }
