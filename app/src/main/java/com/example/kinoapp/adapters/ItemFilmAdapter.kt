@@ -59,6 +59,6 @@ class ItemFilmAdapter(private val context: Context, val clickListener: ItemClick
 
     interface ItemClickInterface {
         fun onClicked(film: Film)
-        fun onClickGenres(genres: String)
+        fun onClickGenres(genres: String,state: Boolean)
     }
 }
