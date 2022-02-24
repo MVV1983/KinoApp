@@ -19,7 +19,6 @@ interface Contract {
 
     interface Presenter {
         fun callApi()
-        fun getData(list: List<Film>)
         fun catchError(message: String)
         fun decryptionCode(code: Int)
         fun getDataForAdapter()
